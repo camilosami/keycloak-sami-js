@@ -2,7 +2,7 @@ const axios = require('axios').default;
 const qs = require('qs');
 const jwt = require('jsonwebtoken');
 
-class KeycloakSani {
+class KeycloakSami {
 	constructor() {}
 
 	config(params) {
@@ -49,4 +49,4 @@ class KeycloakSani {
 	}	
 }
 
-module.exports = new KeycloakSani();
+module.exports = new KeycloakSami();
