@@ -1,14 +1,28 @@
 {
-  "name": "demo",
+  "name": "keycloak-sami-js",
   "version": "1.0.0",
-  "description": "",
-  "main": "keycloak-demo.js",
+  "description": "Keycloak helper",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/camilosami/keycloak-sami-js.git"
+  },
+  "keywords": [
+    "Keycloak",
+    "Sami",
+    "Jwt",
+    "Auth",
+    "Security"
+  ],
+  "author": "Camilo Raitz da Silva",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/camilosami/keycloak-sami-js/issues"
+  },
+  "homepage": "https://github.com/camilosami/keycloak-sami-js#readme",
   "dependencies": {
     "axios": "^0.26.1",
     "jsonwebtoken": "^8.5.1",
