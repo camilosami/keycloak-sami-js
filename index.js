@@ -15,7 +15,7 @@ class KeycloakSami {
 		try {
 			const response = await axios.post(`/realms/${realm}/protocol/openid-connect/token`, qs.stringify(params));
 	
-			return response.data. access_token;
+			return response.data.access_token;
 		} catch (error) {
 			throw error.message;
 		}
