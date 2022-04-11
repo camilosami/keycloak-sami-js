@@ -3,27 +3,40 @@ const qs = require('qs');
 const jwt = require('jsonwebtoken');
 
 class KeycloakSami {
-	constructor() {}
+	constructor(params) {
+		// class attributes
+		this.realm = params.realm;
+		this.baseUrl = params.baseUrl;
+		this.clientId = params.clientId;
+		this.clientSecret = params.clientSecret;
+		this.publicKey = params.publicKey;
+		this.timeout = params.timeout;
 
-	config(params) {
-		axios.defaults.timeout = params.timeout;
-		axios.defaults.baseURL = params.baseURL;
-		return this;
-	}	
+		// axios attributes
+		axios.defaults.timeout = this.timeout;
+		axios.defaults.baseURL = this.baseUrl;
+	}
 
-	async sign(realm, params) {
+	async sign(username, password) {
 		try {
-			const response = await axios.post(`/realms/${realm}/protocol/openid-connect/token`, qs.stringify(params));
+			const response = await axios.post(`/realms/${this.realm}/protocol/openid-connect/token`, qs.stringify({
+				grant_type: 'password',
+				username,
+				password,
+				client_id: this.clientId,
+				client_secret: this.clientSecret				
+			}));
 	
 			return response.data.access_token;
 		} catch (error) {
+			console.error(error.message);
 			throw error.message;
 		}
 	}
 	
-	verify(token, publicKey) {
+	verify(token) {
 		try {
-			jwt.verify(token, publicKey);
+			jwt.verify(token, this.publicKey);
 			return true;
 		} catch (err) {
 			console.error(err);
@@ -31,7 +44,7 @@ class KeycloakSami {
 		}	
 	}
 	
-	async createUser(realm, token, payload) {
+	async createUser(token, realm, payload) {
 		try {
 			await axios({
 				url: `/admin/realms/${realm}/users`,
@@ -49,4 +62,4 @@ class KeycloakSami {
 	}	
 }
 
-module.exports = new KeycloakSami();
+module.exports = KeycloakSami;

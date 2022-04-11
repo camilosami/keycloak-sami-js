@@ -1,8 +1,8 @@
 declare const _exports: KeycloakSani;
 export = _exports;
-declare class KeycloakSani {
-    config(params: any): KeycloakSani;
-    sign(realm: any, params: any): Promise<any>;
-    verify(token: any, publicKey: any): boolean;
-    createUser(realm: any, token: any, payload: any): Promise<void>;
+declare class KeycloakSami {
+    constructor(params: any);
+    sign(username: any, password: any): Promise<any>;
+    verify(token: any): boolean;
+    createUser(token: any, realm: any, payload: any): Promise<void>;
 }

@@ -1,6 +1,6 @@
 {
   "name": "keycloak-sami-js",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "Keycloak helper",
   "main": "index.js",
   "scripts": {
